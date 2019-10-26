@@ -11,7 +11,7 @@ public class ToysSlowServiceController {
 
     @GetMapping("/slow-service-toys")
     private List<Toy> getAllToys() throws Exception {
-        Thread.sleep(2000L); // delay
+        Thread.sleep(2000L);         /** DELAY **/
         return Arrays.asList(
                 new Toy("toy-id-1", "Electric Train", 2045),
                 new Toy("toy-id-2", "Remote Car", 5688),
