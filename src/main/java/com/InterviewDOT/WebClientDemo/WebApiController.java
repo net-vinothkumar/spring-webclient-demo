@@ -38,15 +38,15 @@ public class WebApiController {
     @GetMapping(value = "/toys-non-blocking", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<Toy> getToysDataNonBlocking() {
         System.out.println("Starting NON-BLOCKING CONTROLLER..");
-        Flux<Toy> tweetFlux = WebClient.create()
+        Flux<Toy> toyFlux = WebClient.create()
                 .get()
                 .uri(getSlowServiceUri())
                 .retrieve()
                 .bodyToFlux(Toy.class);
 
-        tweetFlux.subscribe(toy -> System.out.println(toy.toString()));
+        toyFlux.subscribe(toy -> System.out.println(toy.toString()));
         System.out.println("Exiting NON-BLOCKING CONTROLLER..");
-        return tweetFlux;
+        return toyFlux;
     }
 
     private String getSlowServiceUri() {
